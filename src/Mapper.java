@@ -7,7 +7,7 @@ import java.lang.reflect.Method;
 
 public class Mapper {
 
-    public <T> void mapValues(NodeList nodeList, T obj) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {//todo cambiar a generic el segundo parameter
+    public <T> void mapValues(NodeList nodeList, T obj) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         NodeList childNodeList = nodeList.item(0).getChildNodes();
         for (int i = 0; i < childNodeList.getLength(); i++) {
             Node node = childNodeList.item(i);
@@ -20,7 +20,7 @@ public class Mapper {
         }
     }
 
-    public <T> void mapAttributes(NamedNodeMap nodeMap, T obj) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {//todo cambiar a generic el segundo parameter
+    public <T> void mapAttributes(NamedNodeMap nodeMap, T obj) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         for (int i = 0; i < nodeMap.getLength(); i++){
             //construct method with reflection
             String methodString = "set" + nodeMap.item(i).getNodeName();

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document Printer="Brother MFC-L271" FontFamily="Courier" FontSize="8" Orientation="landscape">
+    <Formatted LineSize="132">
+        <Headers>
+            <H1>* * * Titulo * * *                                                      Fecha 07-10-22  9:08   Página   1</H1>
+            <H2>Producción por tipo de habitación desde 01-01-22 hasta 15-01-22</H2>
+            <H3>E N T R A D A S   1 9 - 0 9 - 2 2</H3>
+            <H4>           -----------Individual-----------------------Doble----------------------</H4>
+            <H5>Fecha      Cant.   Producción    Pr. medio Cant.   Producción    Pr. medio Cant.  </H5>
+        </Headers>
+        <Detail>
+            <Line>Si hay linea, no hay sección y si hay sección, no hay linea</Line>
+            <Section H3="ENTRADAS">
+                <Line>01-01-2022    10       578,68        57,87    43     3.012,83        70,07     0</Line>
+                <Line></Line>
+                <Total>
+                    <Line>Total de sección. Siempre se imprime en la misma página que la linea</Line>
+                </Total>
+            </Section>
+            <Total>
+                <Line>Total de todos los detalles</Line>
+            </Total>
+        </Detail>
+    </Formatted>
+    <Raw>
+        <Page>
+            <Line>string</Line>
+        </Page>
+    </Raw>
+</Document>

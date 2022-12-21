@@ -1,3 +1,5 @@
+package services;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
@@ -6,14 +8,14 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 
-public class XmlService {
+public class LocalXmlService implements XmlService{
 
     private String path = "./src/input.xml";
     private DocumentBuilderFactory dbf;
     private File file;
     private Document document;
 
-    public XmlService(){
+    public LocalXmlService(){
         dbf = DocumentBuilderFactory.newInstance();
         try {
             DocumentBuilder db = dbf.newDocumentBuilder();

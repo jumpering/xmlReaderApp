@@ -1,12 +1,14 @@
 import models.Header;
 import models.Page;
 import org.w3c.dom.*;
+import services.LocalXmlService;
+import services.XmlService;
 
 import java.lang.reflect.InvocationTargetException;
 
 public class App {
 
-    private final XmlService xmlService = new XmlService();
+    private final XmlService xmlService = new LocalXmlService();
     private final Mapper mapper = new Mapper();
 
     public static void main(String[] args) throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {

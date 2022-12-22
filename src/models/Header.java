@@ -1,5 +1,7 @@
 package models;
 
+import java.util.Arrays;
+
 public class Header {
 
     private String H1;
@@ -7,6 +9,15 @@ public class Header {
     private String H3;
     private String H4;
     private String H5;
+
+    public String toString(){
+
+        return getH1() + "\n"
+                + getH2() + "\n"
+                + getH3() + "\n"
+                + getH4() + "\n"
+                + getH5() + "\n";
+    }
 
     public String getH1() {
         return H1;
@@ -41,6 +52,12 @@ public class Header {
     }
 
     public String getH5() {
+        //todo for separate columns in array
+//        this.H5 = this.H5.trim();
+//        this.H5 = this.H5.replaceAll("\\s{2,}", "  ");
+//        String[] optionsH5 = this.H5.split("  ");
+//        Arrays.stream(optionsH5).forEach((e) -> System.out.println("elemento: " + e));
+//        System.out.println("size: "+ optionsH5.length);
         return H5;
     }
 

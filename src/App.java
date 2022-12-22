@@ -29,8 +29,7 @@ public class App {
     private void setDocumentAttributesAndHeaders(Document document) throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
         Header header = new Header();
         this.mapper.mapAttributes(this.xmlService.getAttributeNodeByTagName("Document"), document);
-        NodeList headerList = this.xmlService.getNodeListByTagName("Headers");
-        this.mapper.mapValues(headerList, header);
+        this.mapper.mapValues(this.xmlService.getNodeListByTagName("Headers"), header);
         document.setHeader(header);
     }
 

@@ -1,6 +1,7 @@
 import models.Line;
 import models.Section;
 import models.Document;
+
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -49,13 +50,11 @@ public class Mapper {
                 Section section = new Section();
                 NodeList childNodeList = node.getChildNodes();
                 this.mapSectionLinesValues(childNodeList, section);
-                //falta total de cada section!!!
                 this.mapSectionTotalValue(childNodeList, section);
                 document.addSection(section);
             }
-             //agrego el total de todas las secciones
              if (node.getNodeName().equals("Total")){
-                document.setTotal(node.getTextContent());//quitar espacios en blanco
+                document.setTotal(node.getTextContent().strip());
             }
         }        
     }
@@ -84,8 +83,8 @@ public class Mapper {
     private void mapSectionTotalValue(NodeList nodeList, Section section){
         for (int i = 0; i < nodeList.getLength(); i++) {
             if (nodeList.item(i).getNodeName().equals("Total")) {
-                Line line = new Line(nodeList.item(i).getTextContent());
-                section.setTotalLine(line);//quitar espacios en blanco
+                Line line = new Line(nodeList.item(i).getTextContent().strip());
+                section.setTotalLine(line);
             }
         }
     }

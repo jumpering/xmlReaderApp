@@ -22,7 +22,7 @@ public class App {
         this.mapper.mapValues(this.xmlService.getNodeListByTagName("Headers"), header);
         document.setHeader(header);
         this.mapper.mapDetailsToDocumentValues(this.xmlService.getNodeListByTagName("Detail"), document);
-        System.out.println("screen print \n" + document.printConsole());
+        System.out.println("screen print demo \n" + document.printConsole());
     }
 
 }

@@ -21,10 +21,10 @@ public class Document {
         String document = "";
         document += this.header.toString();
         for (Section section : sectionList) {
-            document += section.listLinesToString();
-            document += section.totalLineToString();
+            document += section.listLinesToString() + "\n";
+            document += section.totalLineToString() + "\n";
         }
-        document += this.total;
+        document += this.total + "\n";
 
         return document;
     }

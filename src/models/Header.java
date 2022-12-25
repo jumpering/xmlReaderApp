@@ -5,16 +5,15 @@ public class Header {
     private String pageHeader;
     private String listTitle;
     private String sectionListTitle;
-    private String H4;
-    private String H5;
+    private String H4;//todo falta nombrar
+    private String H5;//todo falta nombrar
 
     public String toString(){
-
         return this.getPageHeader() + "\n"
                 + this.getListTitle() + "\n"
                 + this.getsectionListTitle() + "\n"
-                + getH4() + "\n" //todo falta nombrar
-                + getH5() + "\n"; //todo falta nombrar
+                + getH4() + "\n"
+                + getH5() + "\n";
     }
 
     public String getPageHeader() {

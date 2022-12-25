@@ -23,6 +23,7 @@ public class App {
         document.setHeader(header);
         this.mapper.mapDetailsValuesToDocument(this.xmlService.getNodeListByTagName("Detail"), document);
         System.out.println("screen print demo \n" + document.printConsole());
+        System.out.println("Printer: " + document.getPrinter());
     }
 
 }

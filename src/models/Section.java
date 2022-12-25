@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Section {
 
+    private String H3;
     private List<Line> lineList;
     private Line total;
 
@@ -31,5 +32,13 @@ public class Section {
 
     public String totalLineToString(){
         return this.total.toString();
+    }
+
+    public String getH3() {
+        return H3;
+    }
+
+    public void setH3(String h3) {
+        H3 = h3;
     }
 }

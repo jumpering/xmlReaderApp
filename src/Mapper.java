@@ -33,7 +33,7 @@ public class Mapper {
         }
     }
 
-    public void mapDetailsValuesToDocument(NodeList nodeList, Document document){
+    public void mapDetailsValuesToDocument(NodeList nodeList, Document document) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         List<Node> detailNodeList = getChildNodes(nodeList);
         for (Node node : detailNodeList) {
             if (node.getNodeName().equals("Section")){
@@ -41,6 +41,7 @@ public class Mapper {
                 NodeList childNodeList = node.getChildNodes();
                 this.mapSectionLinesValues(childNodeList, section);
                 this.mapSectionTotalValue(childNodeList, section);
+                 this.mapAttributes(node.getAttributes(), section);
                 document.addSection(section);
             }
              if (node.getNodeName().equals("Total")){
@@ -49,7 +50,7 @@ public class Mapper {
         }        
     }
 
-    public static List<Node> getChildNodes(NodeList nodeList) {
+    private List<Node> getChildNodes(NodeList nodeList) {
         NodeList childNodeList = nodeList.item(0).getChildNodes();
         List<Node> list = new ArrayList<>();
         for (int i = 0; i < childNodeList.getLength(); i++) {

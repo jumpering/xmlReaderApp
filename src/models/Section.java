@@ -5,13 +5,22 @@ import java.util.List;
 
 public class Section {
 
-    private List<Line> lineList = new ArrayList<>();
+    private List<Line> lineList;
+    private Line total;
 
-    public void addLineToList(Line line) {
+    public Section(){
+        this.lineList = new ArrayList<>();
+    }
+
+    public void setListLines(Line line) {
         this.lineList.add(line);
     }
 
-    public String linesToString(){
+    public void setTotalLine(Line line){
+        this.total = line;
+    }
+
+    public String listLinesToString(){
         String lineList = "";
         for (int i = 0; i < this.lineList.size(); i++){
             lineList += this.lineList.get(i);
@@ -20,7 +29,7 @@ public class Section {
         return lineList;
     }
 
-    public Integer getLinesSize(){
-        return this.lineList.size();
+    public String totalLineToString(){
+        return this.total.toString();
     }
 }

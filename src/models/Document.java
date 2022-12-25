@@ -1,21 +1,30 @@
 package models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Document {
 
     private String Printer;
     private String FontFamily;
     private String FontSize;
     private String Orientation;
-
-    private Integer maxSize; //todo how? to size by printer or document. for example, DinA4 = 21 x 29,7 cm
     private Header header;
-    private Section section;
+    private List<Section> sectionList;
+    private String total;
+
+    public Document(){
+        this.sectionList = new ArrayList<>();
+    }
 
     public String printConsole(){
-
         String document = "";
         document += this.header.toString();
-        document += this.section.linesToString();
+        for (Section section : sectionList) {
+            document += section.listLinesToString();
+            document += section.totalLineToString();
+        }
+        document += this.total;
 
         return document;
     }
@@ -56,7 +65,11 @@ public class Document {
         Orientation = orientation;
     }
 
-    public void setSection(Section section) {
-        this.section = section;
+    public void setTotal(String total){
+        this.total = total;
+    }
+
+    public void addSection(Section section) {
+        this.sectionList.add(section);
     }
 }

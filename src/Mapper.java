@@ -1,5 +1,6 @@
 import models.Line;
 import models.Section;
+import models.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -8,6 +9,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class Mapper {
 
@@ -30,14 +32,32 @@ public class Mapper {
         }
     }
 
-    public void mapSectionLineValues(NodeList nodeList, Section section) {
+    public void mapTotalLineValue(NodeList nodeList, Section section){
         List<Node> childNodes = getChildNodes(nodeList);
         for (int i = 0; i < childNodes.size(); i++) {
-            if (childNodes.get(i).getNodeName().equals("Line")) {
+            if (childNodes.get(0).getNodeName().equals("Line")) {
                 Line line = new Line(childNodes.get(i).getTextContent());
-                section.addLineToList(line);
+                section.setTotalLine(line);
             }
         }
+    }
+
+    public void mapDetailsToDocumentValues(NodeList nodeList, Document document){
+        List<Node> detailNodeList = getChildNodes(nodeList);
+        for (Node node : detailNodeList) {
+            if (node.getNodeName().equals("Section")){
+                Section section = new Section();
+                NodeList childNodeList = node.getChildNodes();
+                this.mapSectionLinesValues(childNodeList, section);
+                //falta total de cada section!!!
+                this.mapSectionTotalValue(childNodeList, section);
+                document.addSection(section);
+            }
+             //agrego el total de todas las secciones
+             if (node.getNodeName().equals("Total")){
+                document.setTotal(node.getTextContent());//quitar espacios en blanco
+            }
+        }        
     }
 
     public static List<Node> getChildNodes(NodeList nodeList) {
@@ -45,11 +65,28 @@ public class Mapper {
         List<Node> list = new ArrayList<>();
         for (int i = 0; i < childNodeList.getLength(); i++) {
             Node node = childNodeList.item(i);
-
             if (node.getNodeType() == Node.ELEMENT_NODE) {
                 list.add(node);
             }
         }
         return list;
+    }
+
+    private void mapSectionLinesValues(NodeList nodeList, Section section) {
+        for (int i = 0; i < nodeList.getLength(); i++) {
+            if (nodeList.item(i).getNodeName().equals("Line")) {
+                Line line = new Line(nodeList.item(i).getTextContent());
+                section.setListLines(line);
+            }
+        }
+    }
+
+    private void mapSectionTotalValue(NodeList nodeList, Section section){
+        for (int i = 0; i < nodeList.getLength(); i++) {
+            if (nodeList.item(i).getNodeName().equals("Total")) {
+                Line line = new Line(nodeList.item(i).getTextContent());
+                section.setTotalLine(line);//quitar espacios en blanco
+            }
+        }
     }
 }

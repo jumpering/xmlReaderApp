@@ -11,7 +11,7 @@ public class Document {
     private String orientation;
     private Header header;
     private List<Section> sectionList;
-    private String total;
+    private String totalSections;
 
     public Document(){
         this.sectionList = new ArrayList<>();
@@ -24,13 +24,17 @@ public class Document {
             document += section.listLinesToString() + "\n";
             document += section.totalLineToString() + "\n";
         }
-        document += this.total + "\n";
+        document += this.totalSections + "\n";
 
         return document;
     }
 
     public void setHeader(Header header) {
         this.header = header;
+    }
+
+    public Header getHeader(){
+        return this.header;
     }
 
     public String getPrinter() {
@@ -65,8 +69,12 @@ public class Document {
         this.orientation = orientation;
     }
 
-    public void setTotal(String total){
-        this.total = total;
+    public void setTotalSections(String totalSections){
+        this.totalSections = totalSections;
+    }
+
+    public String getTotalSections(){
+        return this.totalSections;
     }
 
     public void addSection(Section section) {

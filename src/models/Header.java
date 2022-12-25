@@ -6,14 +6,16 @@ public class Header {
     private String listTitle;
     private String sectionListTitle;
     private String H4;//todo falta nombrar
-    private String H5;//todo falta nombrar
+    private String rowTitles;
+    // private String date; //necesary to separate?
+    // private Integer pageNumber; //necesary to separate?
 
     public String toString(){
         return this.getPageHeader() + "\n"
                 + this.getListTitle() + "\n"
                 + this.getsectionListTitle() + "\n"
                 + getH4() + "\n"
-                + getH5() + "\n";
+                + getRowTitles() + "\n";
     }
 
     public String getPageHeader() {
@@ -21,6 +23,7 @@ public class Header {
     }
 
     public void setH1(String h1) {
+        //todo separate pageNumber and date?     
         this.pageHeader = h1;
     }
 
@@ -48,18 +51,12 @@ public class Header {
         H4 = h4;
     }
 
-    public String getH5() {
-        //todo for separate columns in array
-//        this.H5 = this.H5.trim();
-//        this.H5 = this.H5.replaceAll("\\s{2,}", "  ");
-//        String[] optionsH5 = this.H5.split("  ");
-//        Arrays.stream(optionsH5).forEach((e) -> System.out.println("elemento: " + e));
-//        System.out.println("size: "+ optionsH5.length);
-        return H5;
+    public String getRowTitles() {
+        return this.rowTitles;
     }
 
     public void setH5(String h5) {
-        H5 = h5;
+        this.rowTitles = h5;
     }
 
 

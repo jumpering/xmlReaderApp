@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Section {
 
-    private String H3;
+    private String H3;//todo set name: name?
     private List<Line> lineList;
     private Line total;
 
@@ -13,12 +13,8 @@ public class Section {
         this.lineList = new ArrayList<>();
     }
 
-    public void setListLines(Line line) {
-        this.lineList.add(line);
-    }
-
-    public void setTotalLine(Line line){
-        this.total = line;
+    public Integer getSize(){
+        return lineList.size();
     }
 
     public String listLinesToString(){
@@ -32,6 +28,14 @@ public class Section {
 
     public String totalLineToString(){
         return this.total.toString();
+    }
+
+    public void setListLines(Line line) {
+        this.lineList.add(line);
+    }
+
+    public void setTotalLine(Line line){
+        this.total = line;
     }
 
     public String getH3() {

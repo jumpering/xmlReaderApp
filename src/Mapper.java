@@ -41,11 +41,11 @@ public class Mapper {
                 NodeList childNodeList = node.getChildNodes();
                 this.mapSectionLinesValues(childNodeList, section);
                 this.mapSectionTotalValue(childNodeList, section);
-                 this.mapAttributes(node.getAttributes(), section);
+                this.mapAttributes(node.getAttributes(), section);
                 document.addSection(section);
             }
              if (node.getNodeName().equals("Total")){
-                document.setTotal(node.getTextContent().strip());
+                document.setTotalSections(node.getTextContent().strip());
             }
         }        
     }

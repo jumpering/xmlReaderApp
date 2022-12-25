@@ -25,9 +25,12 @@ public class Document {
             document += section.totalLineToString() + "\n";
         }
         document += this.totalSections + "\n";
-
         return document;
     }
+
+    public String getTotalAllDetailsLine(){
+        return this.totalSections;
+    } 
 
     public void setHeader(Header header) {
         this.header = header;

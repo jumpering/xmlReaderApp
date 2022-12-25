@@ -30,25 +30,22 @@ public class App {
         System.out.println("screen print on " + document.getPrinter() + "\n" + document.printConsole());
     }
 
-    public void print(){//todo
-        //printer.setPrintConfig();//todo docFlavor
-        final Integer totalLinesToPrint = 132; //todo set in config? ¿is in formated lineSize?
-        final Integer maxLinesPerPageToPrint = 42; //todo set in config? ¿is in formated lineSize?
+    public void print(){//todo with documentFlavor
+        Integer maxLinesPerPageToPrint = 42; //todo set in printer config? ¿is data on formated lineSize element?
         
         do{
-            this.document.getHeader().getPageHeader();
+            this.document.getHeader().getPageTitle();
             this.document.getHeader().getListTitle();
             this.document.getHeader().getsectionListTitle();
-            //this.document.getH4();//define name. Group Type?¿
-            //this.document.getH5();//define name. Title columns
+            this.document.getHeader().getH4();//define name. Group Type?¿
+            this.document.getHeader().getRowTitles();
 
-            //todo set maximum lines to print
-            // for(int i = 0; i < maxLinesPerPageToPrint - 9; i++){//calculate max lines
-            //     this.document.getNextDetailLine();
-            // }
-            // this.document.getTotalDetailLine();
-
-        }while(totalLinesToPrint != 0 && maxLinesPerPageToPrint != 0);//todo
+            for(int i = 0; i < maxLinesPerPageToPrint - 9; i++){//how to calculate max lines
+                //this.document.getNextDetailLine(); //create method
+             }
+             this.document.getTotalAllDetailsLine();
+            maxLinesPerPageToPrint = maxLinesPerPageToPrint - 9;
+        }while(maxLinesPerPageToPrint != 0);//todo
         this.document.getTotalSections();
     }
 

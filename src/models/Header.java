@@ -2,7 +2,7 @@ package models;
 
 public class Header {
 
-    private String pageHeader;
+    private String pageTitle;
     private String listTitle;
     private String sectionListTitle;
     private String H4;//todo falta nombrar
@@ -11,20 +11,20 @@ public class Header {
     // private Integer pageNumber; //necesary to separate?
 
     public String toString(){
-        return this.getPageHeader() + "\n"
+        return this.getPageTitle() + "\n"
                 + this.getListTitle() + "\n"
                 + this.getsectionListTitle() + "\n"
                 + getH4() + "\n"
                 + getRowTitles() + "\n";
     }
 
-    public String getPageHeader() {
-        return this.pageHeader;
+    public String getPageTitle() {
+        return this.pageTitle;
     }
 
     public void setH1(String h1) {
         //todo separate pageNumber and date?     
-        this.pageHeader = h1;
+        this.pageTitle = h1;
     }
 
     public String getListTitle() {

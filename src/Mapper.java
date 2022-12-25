@@ -33,17 +33,7 @@ public class Mapper {
         }
     }
 
-    public void mapTotalLineValue(NodeList nodeList, Section section){
-        List<Node> childNodes = getChildNodes(nodeList);
-        for (int i = 0; i < childNodes.size(); i++) {
-            if (childNodes.get(0).getNodeName().equals("Line")) {
-                Line line = new Line(childNodes.get(i).getTextContent());
-                section.setTotalLine(line);
-            }
-        }
-    }
-
-    public void mapDetailsToDocumentValues(NodeList nodeList, Document document){
+    public void mapDetailsValuesToDocument(NodeList nodeList, Document document){
         List<Node> detailNodeList = getChildNodes(nodeList);
         for (Node node : detailNodeList) {
             if (node.getNodeName().equals("Section")){

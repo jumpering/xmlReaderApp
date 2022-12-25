@@ -21,7 +21,7 @@ public class App {
         this.mapper.mapAttributes(this.xmlService.getAttributeNodeByTagName("Document"), document);
         this.mapper.mapValues(this.xmlService.getNodeListByTagName("Headers"), header);
         document.setHeader(header);
-        this.mapper.mapDetailsToDocumentValues(this.xmlService.getNodeListByTagName("Detail"), document);
+        this.mapper.mapDetailsValuesToDocument(this.xmlService.getNodeListByTagName("Detail"), document);
         System.out.println("screen print demo \n" + document.printConsole());
     }
 

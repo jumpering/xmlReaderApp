@@ -5,10 +5,10 @@ import java.util.List;
 
 public class Document {
 
-    private String Printer;
-    private String FontFamily;
-    private String FontSize;
-    private String Orientation;
+    private String printer;
+    private String fontFamily;
+    private String fontSize;
+    private String orientation;
     private Header header;
     private List<Section> sectionList;
     private String total;
@@ -34,35 +34,35 @@ public class Document {
     }
 
     public String getPrinter() {
-        return Printer;
+        return this.printer;
     }
 
     public void setPrinter(String printer) {
-        Printer = printer;
+        this.printer = printer;
     }
 
     public String getFontFamily() {
-        return FontFamily;
+        return this.fontFamily;
     }
 
     public void setFontFamily(String fontFamily) {
-        FontFamily = fontFamily;
+        this.fontFamily = fontFamily;
     }
 
     public String getFontSize() {
-        return FontSize;
+        return this.fontSize;
     }
 
     public void setFontSize(String fontSize) {
-        FontSize = fontSize;
+        this.fontSize = fontSize;
     }
 
     public String getOrientation() {
-        return Orientation;
+        return this.orientation;
     }
 
     public void setOrientation(String orientation) {
-        Orientation = orientation;
+        this.orientation = orientation;
     }
 
     public void setTotal(String total){

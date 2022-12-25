@@ -2,43 +2,43 @@ package models;
 
 public class Header {
 
-    private String H1;
-    private String H2;
-    private String H3;
+    private String pageHeader;
+    private String listTitle;
+    private String sectionListTitle;
     private String H4;
     private String H5;
 
     public String toString(){
 
-        return getH1() + "\n"
-                + getH2() + "\n"
-                + getH3() + "\n"
-                + getH4() + "\n"
-                + getH5() + "\n";
+        return this.getPageHeader() + "\n"
+                + this.getListTitle() + "\n"
+                + this.getsectionListTitle() + "\n"
+                + getH4() + "\n" //todo falta nombrar
+                + getH5() + "\n"; //todo falta nombrar
     }
 
-    public String getH1() {
-        return H1;
+    public String getPageHeader() {
+        return this.pageHeader;
     }
 
     public void setH1(String h1) {
-        H1 = h1;
+        this.pageHeader = h1;
     }
 
-    public String getH2() {
-        return H2;
+    public String getListTitle() {
+        return this.listTitle;
     }
 
     public void setH2(String h2) {
-        H2 = h2;
+        this.listTitle = h2;
     }
 
-    public String getH3() {
-        return H3;
+    public String getsectionListTitle() {
+        return this.sectionListTitle;
     }
 
     public void setH3(String h3) {
-        H3 = h3;
+        this.sectionListTitle = h3;
     }
 
     public String getH4() {

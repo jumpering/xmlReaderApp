@@ -22,6 +22,10 @@ public class Header {
         return this.pageTitle;
     }
 
+    public void setPageTitle(String pageTitle){
+        this.pageTitle = pageTitle;
+    }
+
     public void setH1(String h1) {
         //todo separate pageNumber and date?     
         this.pageTitle = h1;

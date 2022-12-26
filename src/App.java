@@ -43,6 +43,7 @@ public class App {
             firstLine += lineLimitForSections;
         }while(false);//todo max number of lines per page
         System.out.println(this.document.getTotalSections());
+        directPrint.print("test: " + this.document.getTotalSections());//text not printed! why?
     }
 
 }

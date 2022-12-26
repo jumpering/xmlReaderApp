@@ -2,6 +2,8 @@ package models;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Document {
 
@@ -13,30 +15,40 @@ public class Document {
     private List<Section> sectionList;
     private String totalSections;
 
-    public Document(){
+    public Document() {
+        
         this.sectionList = new ArrayList<>();
     }
 
-    public String printConsole(){
-        String document = "";
-        document += this.header.toString();
-        for (Section section : sectionList) {
-            document += section.listLinesToString() + "\n";
-            document += section.totalLineToString() + "\n";
+    //todo 
+    //only works with first section!
+    public String sectionsToStringLimitedLines(Integer firstLine, Integer lineLimit) {
+        String[] arraySectionLines = this.sectionList.get(0).listLinesToString().split("\n");
+        List<String> listOfSectionLines = Stream.of(arraySectionLines).collect(Collectors.toList());
+
+        while(firstLine > 0){//todo nullpointer exc
+            listOfSectionLines.remove(0);
+            firstLine--;
+        };
+        String sectionLinesLimited = "";
+        while(lineLimit != 0){//todo nullpointer exc
+            sectionLinesLimited = sectionLinesLimited.concat(listOfSectionLines.get(0) + "\n");
+            listOfSectionLines.remove(0);
+            lineLimit--;
         }
-        document += this.totalSections + "\n";
-        return document;
+        sectionLinesLimited = sectionLinesLimited.concat(this.sectionList.get(0).totalLineToString());
+        return sectionLinesLimited;
     }
 
-    public String getTotalAllDetailsLine(){
-        return this.totalSections;
-    } 
+    public void addSection(Section section) {
+        this.sectionList.add(section);
+    }
 
     public void setHeader(Header header) {
         this.header = header;
     }
 
-    public Header getHeader(){
+    public Header getHeader() {
         return this.header;
     }
 
@@ -72,15 +84,11 @@ public class Document {
         this.orientation = orientation;
     }
 
-    public void setTotalSections(String totalSections){
+    public void setTotalSections(String totalSections) {
         this.totalSections = totalSections;
     }
 
-    public String getTotalSections(){
+    public String getTotalSections() {
         return this.totalSections;
-    }
-
-    public void addSection(Section section) {
-        this.sectionList.add(section);
     }
 }

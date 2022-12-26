@@ -21,7 +21,7 @@ public class LocalXmlService implements XmlService{
             DocumentBuilder db = dbf.newDocumentBuilder();
             file = new File(path);
             document = db.parse(file);
-            document.getDocumentElement().normalize();
+            document.getDocumentElement().normalize(); //removes empty text nodes, and joins adjacent text nodes.
         } catch (Exception e) {
             e.printStackTrace();
         }

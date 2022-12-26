@@ -27,26 +27,23 @@ public class App {
         this.mapper.mapValues(this.xmlService.getNodeListByTagName("Headers"), header);
         document.setHeader(header);
         this.mapper.mapDetailsValuesToDocument(this.xmlService.getNodeListByTagName("Detail"), document);
-        System.out.println("screen print on " + document.getPrinter() + "\n" + document.printConsole());
+        this.print();
     }
 
-    public void print(){//todo with documentFlavor
-        Integer maxLinesPerPageToPrint = 42; //todo set in printer config? ¿is data on formated lineSize element?
-        
+    //todo
+    //with documentFlavor
+    //replace System.out.println() with directPrint()
+    //only works with one section (requisitos)
+    public void print(){
+        DirectPrint directPrint = new DirectPrint();
+        Integer lineLimitForSections = 5;
+        Integer firstLine = 0;
         do{
-            this.document.getHeader().getPageTitle();
-            this.document.getHeader().getListTitle();
-            this.document.getHeader().getsectionListTitle();
-            this.document.getHeader().getH4();//define name. Group Type?¿
-            this.document.getHeader().getRowTitles();
-
-            for(int i = 0; i < maxLinesPerPageToPrint - 9; i++){//how to calculate max lines
-                //this.document.getNextDetailLine(); //create method
-             }
-             this.document.getTotalAllDetailsLine();
-            maxLinesPerPageToPrint = maxLinesPerPageToPrint - 9;
-        }while(maxLinesPerPageToPrint != 0);//todo
-        this.document.getTotalSections();
+            System.out.println(this.document.getHeader().toString());
+            System.out.println(this.document.sectionsToStringLimitedLines(firstLine, lineLimitForSections));
+            firstLine += lineLimitForSections;
+        }while(false);//todo
+        System.out.println(this.document.getTotalSections());
     }
 
 }

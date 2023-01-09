@@ -1,5 +1,5 @@
-<h1>Domain model</h1>
+<h1>Software model</h1>
 
 <img src="out\src\domainModel\domainModel.svg"
-     alt="Domain model"
+     alt="Software model"
      style="float: left; margin-right: 10px;" />

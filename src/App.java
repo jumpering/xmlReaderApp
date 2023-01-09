@@ -27,11 +27,10 @@ public class App {
         this.mapper.mapDetailsValuesToDocument(this.xmlService.getNodeListByTagName("Detail"), this.document);
         this.mapper.mapValues(this.xmlService.getNodeListByTagName("Headers"), this.header);
         this.document.setHeader(this.header);
-        this.print();
+        this.print(10);
     }
 
-    public void print() {
-        Integer maxLinesPerPage = 10;
+    public void print(Integer maxLinesPerPage) {
         do{
             System.out.println(this.document.toString(maxLinesPerPage));
         }while(this.document.end());

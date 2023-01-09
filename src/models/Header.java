@@ -19,6 +19,13 @@ public class Header {
                 + this.getRowTitles().toString() + "\n";
     }
 
+    public void setH1(String h1) {
+        String[] separateTitleDateAndPage = h1.split("\\bFecha | \\bPágina");
+        String title = separateTitleDateAndPage[0];
+        this.date = separateTitleDateAndPage[1];
+        this.lineMap.put("pageTitle", new Line(title));
+    }
+
     public Integer getSize() {
         return this.lineMap.size();
     }
@@ -29,13 +36,6 @@ public class Header {
 
     public void setPageTitle(String pageTitle) {
         this.lineMap.put("pageTitle", new Line(pageTitle));
-    }
-
-    public void setH1(String h1) {
-        String[] separateTitleDateAndPage = h1.split("\\bFecha | \\bPágina");
-        String title = separateTitleDateAndPage[0];
-        this.date = separateTitleDateAndPage[1];
-        this.lineMap.put("pageTitle", new Line(title));
     }
 
     public Line getListTitle() {

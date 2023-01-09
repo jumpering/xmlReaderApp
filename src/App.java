@@ -4,6 +4,8 @@ import services.LocalXmlService;
 import services.XmlService;
 import java.lang.reflect.InvocationTargetException;
 
+import javax.print.PrintException;
+
 public class App {
 
     private final XmlService xmlService = new LocalXmlService();
@@ -11,16 +13,16 @@ public class App {
     private Document document;
     private Header header;
 
-    public App(){
+    public App() {
         this.document = new Document();
         this.header = new Header();
     }
 
-    public static void main(String[] args) throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+    public static void main(String[] args) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException, PrintException {
         new App().run();
     }
 
-    public void run() throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+    public void run() throws InvocationTargetException, IllegalAccessException, NoSuchMethodException, PrintException {
         this.mapper.mapAttributes(this.xmlService.getAttributeNodeByTagName("Document"), this.document);
         this.mapper.mapDetailsValuesToDocument(this.xmlService.getNodeListByTagName("Detail"), this.document);
         this.mapper.mapValues(this.xmlService.getNodeListByTagName("Headers"), this.header);
@@ -28,22 +30,12 @@ public class App {
         this.print();
     }
 
-    //todo
-    //replace System.out.println() with directPrint() documentFlavor
-    //only works with one section (refactor)
-    //setPageNumber and date (in xml appears?)
-    public void print(){
-        DirectPrint directPrint = new DirectPrint();
-        Integer lineLimitForSections = 5;
-        Integer firstLine = 0;
-        this.document.getHeader().setPageTitle("Header changed");
+    public void print() {
+        Integer maxLinesPerPage = 10;
         do{
-            System.out.println(this.document.getHeader().toString());
-            System.out.println(this.document.sectionsToStringLimitedLines(firstLine, lineLimitForSections));
-            firstLine += lineLimitForSections;
-        }while(false);//todo max number of lines per page
-        System.out.println(this.document.getTotalSections());
-        directPrint.print("test: " + this.document.getTotalSections());//text not printed! why?
+            System.out.println(this.document.toString(maxLinesPerPage));
+        }while(this.document.end());
+
     }
 
 }

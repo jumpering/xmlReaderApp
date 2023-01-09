@@ -26,8 +26,10 @@
                 </Total>
             </Section>
             <Section H3="SALIDAS">
-                <Line>01-01-2022    10       578,68        57,87    43     3.012,83        70,07     0</Line>
-                <Line>02-01-2022    11       600,00        60,00    44     3.000,00        80,00     1</Line>
+                <Line>01-01-2022    20       578,68        57,87    43     3.012,83        70,07     0</Line>
+                <Line>02-01-2022    21       600,00        60,00    44     3.000,00        80,00     1</Line>
+                <Line>02-01-2022    22       600,00        60,00    44     3.000,00        80,00     1</Line>
+                <Line>02-01-2022    23       600,00        60,00    44     3.000,00        80,00     1</Line>
                 <Total>
                     <Line>Total de sección. Siempre se imprime en la misma página que la linea</Line>
                 </Total>

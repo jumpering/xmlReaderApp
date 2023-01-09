@@ -11,7 +11,6 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Mapper {
 
     public <T> void mapValues(NodeList nodeList, T obj) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {

@@ -2,8 +2,6 @@ package models;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Document {
 
@@ -12,32 +10,38 @@ public class Document {
     private String fontSize;
     private String orientation;
     private Header header;
-    private List<Section> sectionList;
-    private String totalSections;
 
-    public Document() {
-        
-        this.sectionList = new ArrayList<>();
+    private List<Section> sectionList  = new ArrayList<>();
+    private List<Line> linesInSectionsList  = new ArrayList<>();
+
+    private String totalSections;
+    private Integer pageNumber = 1;
+
+    public String toString(Integer maxLinesPerPage){
+        maxLinesPerPage = maxLinesPerPage - this.header.getSize() - 1;//1 is line totalSections
+        StringBuilder linesToString = new StringBuilder();
+        linesToString.append(this.getHeader().toString(this.pageNumber));
+        if (this.linesInSectionsList.size() == 0) {
+            for (Section section : this.sectionList) {
+                for (int i = 0; i < section.getSize(); i++) {
+                    this.linesInSectionsList.add(section.geLine(i));
+                }
+            }
+        }         
+        if (maxLinesPerPage > this.linesInSectionsList.size()) {
+            maxLinesPerPage = this.linesInSectionsList.size();
+        }
+        for (int i = 0; i < maxLinesPerPage; i++) {
+            linesToString.append(this.linesInSectionsList.get(i) + "\n"); 
+        }
+        linesToString.append(this.getTotalSections().toString());
+        this.linesInSectionsList.subList(0, maxLinesPerPage).clear();
+        this.pageNumber++;
+        return linesToString.toString();
     }
 
-    //todo 
-    //only works with first section!
-    public String sectionsToStringLimitedLines(Integer firstLine, Integer lineLimit) {
-        String[] arraySectionLines = this.sectionList.get(0).listLinesToString().split("\n");
-        List<String> listOfSectionLines = Stream.of(arraySectionLines).collect(Collectors.toList());
-
-        while(firstLine > 0){//todo nullpointer exc
-            listOfSectionLines.remove(0);
-            firstLine--;
-        };
-        String sectionLinesLimited = "";
-        while(lineLimit != 0){//todo nullpointer exc
-            sectionLinesLimited = sectionLinesLimited.concat(listOfSectionLines.get(0) + "\n");
-            listOfSectionLines.remove(0);
-            lineLimit--;
-        }
-        sectionLinesLimited = sectionLinesLimited.concat(this.sectionList.get(0).totalLineToString());
-        return sectionLinesLimited;
+    public boolean end(){
+        return this.linesInSectionsList.size() > 0;
     }
 
     public void addSection(Section section) {
@@ -91,4 +95,5 @@ public class Document {
     public String getTotalSections() {
         return this.totalSections;
     }
+
 }

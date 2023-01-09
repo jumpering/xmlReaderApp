@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Section {
 
-    private String H3;//todo set name: name?
+    private String title;
     private List<Line> lineList;
     private Line total;
 
@@ -17,13 +17,8 @@ public class Section {
         return lineList.size();
     }
 
-    public String listLinesToString(){
-        String lineList = "";
-        for (int i = 0; i < this.lineList.size(); i++){
-            lineList += this.lineList.get(i);
-            lineList += "\n";
-        }
-        return lineList;
+    public Line geLine(Integer lineNumber){
+        return this.lineList.get(lineNumber);
     }
 
     public String totalLineToString(){
@@ -38,11 +33,11 @@ public class Section {
         this.total = line;
     }
 
-    public String getH3() {
-        return H3;
+    public String getTitle() {
+        return this.title;
     }
 
     public void setH3(String h3) {
-        H3 = h3;
+        this.title = h3;
     }
 }

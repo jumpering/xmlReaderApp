@@ -15,9 +15,6 @@ App *--> Document
 Document *--> Header
 Document *--> Section
 
-Mapper ..> Document
-Mapper ..> XmlService
-
 Header ..> Line
 Section ..> Line
 @enduml

@@ -1,0 +1,20 @@
+@startuml
+class App
+interface XmlService
+class LocalXmlService
+class Mapper
+class Document
+class Header
+class Section
+class Line
+
+App *--> XmlService
+XmlService <-- LocalXmlService
+App *--> Mapper
+App *--> Document
+Document *--> Header
+Document *--> Section
+
+Header ..> Line
+Section ..> Line
+@enduml

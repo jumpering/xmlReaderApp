@@ -1,0 +1,1 @@
+![](\src\domainModel\domainModel.svg)

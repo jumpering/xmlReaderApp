@@ -18,7 +18,8 @@ public class App {
         this.header = new Header();
     }
 
-    public static void main(String[] args) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException, PrintException {
+    public static void main(String[] args)
+            throws InvocationTargetException, IllegalAccessException, NoSuchMethodException, PrintException {
         new App().run();
     }
 
@@ -27,13 +28,13 @@ public class App {
         this.mapper.mapDetailsValuesToDocument(this.xmlService.getNodeListByTagName("Detail"), this.document);
         this.mapper.mapValues(this.xmlService.getNodeListByTagName("Headers"), this.header);
         this.document.setHeader(this.header);
-        this.print(10);
+        this.print(12);
     }
 
     public void print(Integer maxLinesPerPage) {
-        do{
+        do {
             System.out.println(this.document.toString(maxLinesPerPage));
-        }while(this.document.end());
+        } while (this.document.end());
 
     }
 

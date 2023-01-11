@@ -1,12 +1,4 @@
-import java.io.BufferedInputStream;
-import java.io.ByteArrayInputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.StringBufferInputStream;
 import java.nio.charset.Charset;
-import java.util.Arrays;
-import java.util.Base64;
 
 import javax.print.Doc;
 import javax.print.DocFlavor;

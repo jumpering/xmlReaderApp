@@ -12,36 +12,48 @@ public class Document {
     private Header header;
 
     private List<Section> sectionList = new ArrayList<>();
-    private List<Line> linesInSectionsList = new ArrayList<>();
-
     private String totalSections;
     private Integer pageNumber = 1;
+    private List<Line> currentSectionLinesToPrint = new ArrayList<>();
+    private Integer currentSectionPosition = 0;
 
-    public String toString(Integer maxLinesPerPage) {
-        maxLinesPerPage = maxLinesPerPage - this.header.getSize() - 1;// 1 is line totalSections
+    public String toString(Integer maxLines) {
+        maxLines = maxLines - this.header.getSize() - 1;// 1 is total section
         StringBuilder linesToString = new StringBuilder();
         linesToString.append(this.getHeader().toString(this.pageNumber));
-        if (this.linesInSectionsList.size() == 0) {
-            for (Section section : this.sectionList) {
-                for (int i = 0; i < section.getSize(); i++) {
-                    this.linesInSectionsList.add(section.geLine(i));
-                }
-            }
-        }
-        if (maxLinesPerPage > this.linesInSectionsList.size()) {
-            maxLinesPerPage = this.linesInSectionsList.size();
-        }
-        for (int i = 0; i < maxLinesPerPage; i++) {
-            linesToString.append(this.linesInSectionsList.get(i) + "\n");
-        }
+        this.getSectionsLimitedLines(maxLines).forEach(e -> linesToString.append(e.toString() + "\n"));
+        ;
         linesToString.append(this.getTotalSections().toString());
-        this.linesInSectionsList.subList(0, maxLinesPerPage).clear();
         this.pageNumber++;
         return linesToString.toString();
     }
 
-    public boolean end() {
-        return this.linesInSectionsList.size() > 0;
+    public List<Line> getSectionsLimitedLines(Integer maxLines) {
+        maxLines--; // -1 for total section line
+        List<Line> linesToPrint = new ArrayList<>();
+        if (this.currentSectionLinesToPrint.size() == 0) {
+            for (int i = 0; i < this.sectionList.get(this.currentSectionPosition).getSize(); i++) {
+                this.currentSectionLinesToPrint.add(this.sectionList.get(this.currentSectionPosition).getLine(i));
+            }
+        }
+        if (this.currentSectionLinesToPrint.size() < maxLines) {
+            maxLines = this.currentSectionLinesToPrint.size();
+        }
+        this.currentSectionLinesToPrint.subList(0, maxLines).forEach(e -> linesToPrint.add(e));
+        linesToPrint.add(this.sectionList.get(this.currentSectionPosition).getTotal());
+        this.currentSectionLinesToPrint.subList(0, maxLines).clear();
+        if (this.currentSectionLinesToPrint.size() == 0) {
+            this.currentSectionPosition++;
+        }
+        return linesToPrint;
+    }
+
+    public boolean remainLines() {
+        if (this.currentSectionPosition == this.sectionList.size()) {
+            this.currentSectionPosition = 0;
+            return false;
+        }
+        return true;
     }
 
     public void addSection(Section section) {

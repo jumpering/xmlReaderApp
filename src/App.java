@@ -34,7 +34,7 @@ public class App {
     public void print(Integer maxLinesPerPage) {
         do {
             System.out.println(this.document.toString(maxLinesPerPage));
-        } while (this.document.end());
+        } while (this.document.remainLines());
 
     }
 

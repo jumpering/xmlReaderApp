@@ -17,12 +17,16 @@ public class Section {
         return lineList.size();
     }
 
-    public Line geLine(Integer lineNumber){
+    public Line getLine(Integer lineNumber){
         return this.lineList.get(lineNumber);
     }
 
-    public String totalLineToString(){
-        return this.total.toString();
+    // public String totalLineToString(){
+    //     return this.total.toString();
+    // }
+
+    public Line getTotal(){
+        return this.total;
     }
 
     public void setListLines(Line line) {

@@ -14,6 +14,7 @@ public class Document {
     private List<Section> sectionList = new ArrayList<>();
     private String totalSections;
     private Integer pageNumber = 1;
+
     private List<Line> currentSectionLinesToPrint = new ArrayList<>();
     private Integer currentSectionPosition = 0;
 
@@ -22,8 +23,9 @@ public class Document {
         StringBuilder linesToString = new StringBuilder();
         linesToString.append(this.getHeader().toString(this.pageNumber));
         this.getSectionsLimitedLines(maxLines).forEach(e -> linesToString.append(e.toString() + "\n"));
-        ;
-        linesToString.append(this.getTotalSections().toString());
+        if (this.currentSectionPosition == this.sectionList.size()){
+            linesToString.append(this.getTotalSections().toString());
+        }
         this.pageNumber++;
         return linesToString.toString();
     }
